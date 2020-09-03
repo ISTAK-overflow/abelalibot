@@ -2,18 +2,8 @@ from pyrogram import Client
 import pyrogram.filters as filters
 
 
-do_bot=true
+do_bot=True
 
-
-@updater.on_message(Filters.regex("/bot") & Filters.chat(chat_id))
-def qw(client, message):
-    global do_bot
-    do_bot = not do_bot
-    updater.send_message(
-        chat_id=message.chat.id,
-        text=f"Bot is {do_bot}",
-        reply_to_message_id=message.message_id,
-    )
 
 
 updater = Client( session_name="my_ser",api_id=1493393,api_hash="be0a41fdca754698342bc5318d82e380",bot_token="1206157978:AAFZSbLYWmGKyoq-d3PobnFQtLGrEeBGItY")
@@ -23,6 +13,18 @@ def _yhh1(client, message):
         message.reply_text("cause I'm heartless")
         message.reply_audio("https://t.me/wawawd/2")
         message.reply_animation("https://t.me/wawawd/5")
+
+
+@updater.on_message(filters.regex("/bot") )
+def qw(client, message):
+    global do_bot
+    do_bot = not do_bot
+    updater.send_message(
+        chat_id=message.chat.id,
+        text=f"Bot is {do_bot}",
+        reply_to_message_id=message.message_id,
+    )
+
 
 
 @updater.on_message(~filters.channel & (filters.regex("تیران") | filters.regex("تهران") |  filters.regex("tehran") | filters.regex("tiran") ))
